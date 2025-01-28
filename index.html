@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .random-letter {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://github.com" target="_blank">
+        <h1 id="text">Hello World!!!</h1>
+    </a>
+
+    <script>
+        function getRandomColor() {
+            return '#' + Math.floor(Math.random()*16777215).toString(16);
+        }
+
+        function getRandomSize() {
+            return Math.random() * (2 - 0.5) + 0.5; // 返回0.5到2之间的随机数
+        }
+
+        const text = document.getElementById('text');
+        const letters = text.textContent.split('');
+        text.textContent = '';
+        
+        letters.forEach(letter => {
+            const span = document.createElement('span');
+            span.textContent = letter;
+            span.className = 'random-letter';
+            span.style.color = getRandomColor();
+            span.style.fontSize = `${getRandomSize()}em`;
+            text.appendChild(span);
+        });
+    </script>
+</body>
+</html>
